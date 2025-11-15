@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>QVN Cosmic Circulation — AI Revenue Core Flow</title>
+<style>
+  :root{
+    --bg:#060712; --rev:#ffd166; --qsf:#66d0ff; --ai:#ff6b6b; --val:#7cffb2; --wallet:#fb8bff; --trust:#8cff66;
+  }
+  html,body{height:100%; margin:0; background:radial-gradient(1000px at 70% -10%, #122 0%, var(--bg) 70%); color:#eee; font-family:Segoe UI, sans-serif;}
+  header{padding:14px 20px; font-weight:600; text-align:center; letter-spacing:.2px;}
+  svg{width:min(1200px,98vw); height:min(720px,90vh); display:block; margin:auto;}
+  .label{font-size:13px; font-weight:600; text-shadow:0 1px 2px #000a;}
+  .soft{font-size:11px; opacity:.8}
+  .flow{stroke-linecap:round; stroke-dasharray:10 14; animation:dash 8s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-600}}
+  .orbit{stroke:rgba(255,255,255,.12)}
+  .node{filter:drop-shadow(0 0 6px rgba(255,255,255,.3))}
+</style>
+</head>
+<body>
+<header>QVN Cosmic Circulation — AI Revenue → QSAFP/QVN → People → Back to AI</header>
+
+<svg viewBox="0 0 1200 720" role="img">
+  <!-- AI Revenue Sphere (center left) -->
+  <g transform="translate(400,360)">
+    <circle r="120" fill="var(--ai)" opacity=".9" class="node"/>
+    <text text-anchor="middle" y="5" class="label">AI REVENUES</text>
+    <text text-anchor="middle" y="28" class="soft">Massive inflows</text>
+  </g>
+
+  <!-- QSAFP/QVN Safety Sphere (center right) -->
+  <g transform="translate(800,360)">
+    <circle r="90" fill="var(--qsf)" opacity=".95" class="node"/>
+    <text text-anchor="middle" y="-5" class="label">QSAFP / QVN</text>
+    <text text-anchor="middle" y="18" class="soft">Lease • Expire • Quorum</text>
+    <text text-anchor="middle" y="38" class="soft">Validator Network</text>
+  </g>
+
+  <!-- Plentiful People nodes (left side inflows) -->
+  <g fill="var(--val)">
+    <!-- scatter many dots to represent masses -->
+    <circle cx="160" cy="180" r="6" class="node"/>
+    <circle cx="200" cy="200" r="7" class="node"/>
+    <circle cx="220" cy="300" r="6" class="node"/>
+    <circle cx="180" cy="400" r="7" class="node"/>
+    <circle cx="250" cy="480" r="6" class="node"/>
+    <circle cx="280" cy="250" r="6" class="node"/>
+    <circle cx="150" cy="300" r="5" class="node"/>
+    <circle cx="190" cy="340" r="5" class="node"/>
+    <circle cx="230" cy="420" r="5" class="node"/>
+    <circle cx="260" cy="370" r="5" class="node"/>
+    <text x="150" y="160" class="soft">People (Consumption)</text>
+  </g>
+
+  <!-- Plentiful People nodes (right side outflows) -->
+  <g fill="var(--val)">
+    <circle cx="1000" cy="220" r="6" class="node"/>
+    <circle cx="980" cy="280" r="6" class="node"/>
+    <circle cx="1030" cy="320" r="7" class="node"/>
+    <circle cx="950" cy="360" r="6" class="node"/>
+    <circle cx="1020" cy="400" r="7" class="node"/>
+    <circle cx="960" cy="440" r="6" class="node"/>
+    <circle cx="1040" cy="480" r="6" class="node"/>
+    <circle cx="920" cy="300" r="5" class="node"/>
+    <circle cx="1080" cy="360" r="5" class="node"/>
+    <circle cx="970" cy="500" r="5" class="node"/>
+    <text x="1040" y="200" class="soft">People (Validators / Payouts)</text>
+  </g>
+
+  <!-- Wallets on right side -->
+  <g fill="var(--wallet)">
+    <rect x="960" y="260" width="12" height="12" rx="3" class="node"/>
+    <rect x="990" y="360" width="12" height="12" rx="3" class="node"/>
+    <rect x="940" y="440" width="12" height="12" rx="3" class="node"/>
+    <text x="970" y="250" class="soft">Wallets</text>
+  </g>
+
+  <!-- Thicker Flows: people → AI Revenue inflow -->
+  <g stroke="var(--rev)" stroke-width="5" fill="none">
+    <path class="flow" d="M200,200 C300,250 320,300 400,360"/>
+    <path class="flow" d="M180,400 C280,420 320,380 400,360"/>
+    <path class="flow" d="M250,480 C330,450 350,400 400,360"/>
+  </g>
+  <text x="220" y="170" fill="var(--rev)" class="soft">Spending → Revenues</text>
+
+  <!-- Thicker Flows: AI Revenue → QSAFP Safety -->
+  <g stroke="var(--rev)" stroke-width="6" fill="none">
+    <path class="flow" d="M520,360 C600,360 700,360 800,360"/>
+  </g>
+  <text x="600" y="340" fill="var(--rev)" class="soft">AI Ops Stream →</text>
+
+  <!-- Thicker Flows: QSAFP Safety → Right-side people/payouts -->
+  <g stroke="var(--val)" stroke-width="5" fill="none">
+    <path class="flow" d="M890,360 C930,320 970,300 1000,220"/>
+    <path class="flow" d="M890,360 C930,360 970,360 980,280"/>
+    <path class="flow" d="M890,360 C930,400 970,420 1020,400"/>
+    <path class="flow" d="M890,360 C930,420 950,460 960,440"/>
+  </g>
+  <text x="930" y="530" fill="var(--val)" class="soft">Validator payouts</text>
+
+  <!-- Feedback: Right-side people → back to AI Revenue (loop) -->
+  <g stroke="var(--trust)" stroke-width="4" fill="none">
+    <path class="flow" d="M1000,220 C900,160 700,180 400,360"/>
+    <path class="flow" d="M1040,480 C900,520 700,520 400,360"/>
+  </g>
+  <text x="720" y="150" fill="var(--trust)" class="soft">Trust / Demand → Back to AI</text>
+
+  <!-- Caption -->
+  <text x="600" y="700" text-anchor="middle" class="soft">AI captures revenues from masses → passes through QSAFP/QVN → distributes to validators → cycles back as trust & demand</text>
+</svg>
+
+</body>
+</html>
