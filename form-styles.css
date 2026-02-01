@@ -1,0 +1,91 @@
+.form-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.form-section h3 {
+  margin-top: 0;
+  color: #dc3545; /* OCUP red accent */
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #212529;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.char-count {
+  display: block;
+  text-align: right;
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-top: -0.75rem;
+  margin-bottom: 1rem;
+}
+
+button[type="submit"] {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: #c82333;
+}
+
+.form-disclaimer {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+```
+
+---
+
+## After-Submit Page
+
+Configure Formspree's **Success Message** or redirect to a custom thank-you page:
+
+**Option A: Simple Message (Formspree default)**
+```
+✅ Challenge application received!
+
+We'll review your submission and respond within 2 business days.
+
+Watch your inbox for next steps from licensing@bwrci.org

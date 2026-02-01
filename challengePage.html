@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The OCUP Challenge - 60 Days to Join, 30 Days to Break It. Try to break hardware-enforced AI authority. Public, no-cost challenge for robotics companies and security researchers.">
+    <meta name="keywords" content="OCUP Challenge, AI safety, hardware security, humanoid robotics, temporal authority, QSAFP, AEGES, challenge">
+    <meta name="author" content="Sivad AiCOMSCI PBC">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aicomsci.org/challenge">
+    <meta property="og:title" content="The OCUP Challenge | Try to Break It">
+    <meta property="og:description" content="60 Days to Join. 30 Days to Break It. Public challenge to break hardware-enforced AI authority. Free access, limited participation window.">
+    <meta property="og:image" content="https://aicomsci.org/CREST-2.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://aicomsci.org/challenge">
+    <meta name="twitter:title" content="The OCUP Challenge | Try to Break It">
+    <meta name="twitter:description" content="60 Days to Join. 30 Days to Break It. Can you break hardware-enforced AI authority?">
+    <meta name="twitter:image" content="https://aicomsci.org/CREST-2.png">
+    
+    <title>The OCUP Challenge | Try to Break It</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #ffffff;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0f0a1f 100%);
+            line-height: 1.6;
+        }
+
+        /* Starfield Background */
+        #bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        nav .back-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav .back-link:hover {
+            color: #00d4ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        .hero-crest {
+            width: 250px;
+            height: auto;
+            margin: 0 auto 40px;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            color: #FFD700;
+            font-weight: 600;
+        }
+
+        .hero-lock {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-dare {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin: 30px 0;
+        }
+
+        .hero-timeline {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+        }
+
+        .hero-timeline strong {
+            color: #00d4ff;
+        }
+
+        /* Content Sections */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-dark {
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #00d4ff;
+        }
+
+        .content-block {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .content-block h3 {
+            color: #FFD700;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .content-block p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
+        }
+
+        .content-block ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-block ul li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .content-block ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        /* Win Conditions */
+        .win-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .win-card {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.1) 0%, rgba(255, 100, 0, 0.1) 100%);
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .win-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 0, 0, 0.6);
+        }
+
+        .win-card-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ff4444;
+            margin-bottom: 15px;
+        }
+
+        .win-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .win-card-desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0088ff 100%);
+            color: #0a0a1a;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            margin: 10px;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .download-btn.primary {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .download-btn.primary:hover {
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Form Section */
+        .form-section {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+        }
+
+        .form-section h2 {
+            margin-bottom: 15px;
+        }
+
+        .form-intro {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+        }
+
+        .challenge-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #00d4ff;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .form-checkbox input[type="checkbox"] {
+            margin-top: 4px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #00d4ff;
+        }
+
+        .form-checkbox label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+
+        .form-submit {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #0a0a1a;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .form-submit:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-status {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .form-status.success {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            color: #00ff88;
+            display: block;
+        }
+
+        .form-status.error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            color: #ff6b6b;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            margin-top: 80px;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 10px 0;
+        }
+
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #FFD700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-crest {
+                width: 180px;
+            }
+
+            .content-block {
+                padding: 25px;
+            }
+
+            .form-section {
+                padding: 30px 20px;
+            }
+
+            .download-btn {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bg"></canvas>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">Σ + 1 AiCOMSCI</a>
+            <a href="/" class="back-link">← Back to Main Site</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <img src="CREST-2.png" alt="BWRCI OCUP Challenge Crest" class="hero-crest">
+            
+            <div class="hero-badge">Public, No-Cost Challenge • Limited Participation Window</div>
+            
+            <div class="hero-lock">🔐</div>
+            <h1 class="hero-title">THE OCUP CHALLENGE</h1>
+            
+            <p class="hero-subtitle">
+                OCUP is hardware-enforced authority. If time expires, execution stops.<br>
+                No software path can override this.
+            </p>
+            
+            <div class="hero-dare">TRY TO BREAK IT.</div>
+            
+            <div class="hero-timeline">
+                <strong>60 Days to Join</strong> • <strong>30 Days to Break It</strong>
+            </div>
+
+            <a href="#signup" class="download-btn primary">Take The Challenge →</a>
+        </div>
+    </section>
+
+    <!-- What Is This Section -->
+    <section>
+        <div class="container">
+            <div class="content-block">
+                <h3>What Is The OCUP Challenge?</h3>
+                <p>By 2026, humanoid robotics enters scaled commercial deployment. Production fleets are ramping globally: Boston Dynamics Atlas units shipping to Hyundai and DeepMind, UBTECH delivering thousands to factories, Tesla Optimus scaling internal pilots, Figure manufacturing at volume.</p>
+                
+                <p>These systems weigh 60-80kg and move at human speeds with high joint torque. When authority boundaries fail in software, the consequences aren't theoretical—they're physical.</p>
+                
+                <p><strong>OCUP enforces temporal authority at the hardware level.</strong> If authority can self-extend, a compromised AI system could escalate indefinitely. OCUP makes that physically impossible.</p>
+                
+                <p>The safety window is closing. The deployment timeline is compressed.</p>
+                
+                <p><strong>You have 60 days to join. Then 30 days to prove it doesn't work.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section-dark">
+        <div class="container">
+            <h2>⏱️ Timeline</h2>
+            <div class="content-block">
+                <h3>Public Intake Window</h3>
+                <p><strong>60 Days to Sign Up:</strong> February 3 - April 3, 2026</p>
+                <p>Plenty of time to review the challenge details, discuss with your team, and decide to participate. No rush, no FOMO.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>Challenge Testing Window</h3>
+                <p><strong>30 Days to Break It:</strong> Once you're granted access</p>
+                <p>After signing the Pilot Evaluation Agreement, you'll receive repository access within 24 hours. From that moment, you have 30 days to run scenarios, stress test, and attempt to break OCUP's authority enforcement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get Section -->
+    <section>
+        <div class="container">
+            <h2>🎯 What You Get</h2>
+            
+            <div class="content-block">
+                <h3>Public Repository (Available Feb 3)</h3>
+                <ul>
+                    <li>Architecture documentation</li>
+                    <li>API / trait interfaces</li>
+                    <li>Simplified authority demos</li>
+                    <li>Test harness framework</li>
+                    <li>CLI demo (bounded, non-optimizing)</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>Pilot Access (Under Evaluation Agreement)</h3>
+                <ul>
+                    <li>Phase 1 Rust reference implementation (Authority Core, Behavioral Sims)</li>
+                    <li>Advanced test scenarios (Governance Invariants, Lease Recovery, Hardware Paths)</li>
+                    <li>Full stress scenarios</li>
+                    <li>Direct Trilogy engineering support</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Win Section -->
+    <section class="section-dark">
+        <div class="container">
+            <h2>🎯 How to Win (Break It)</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: rgba(255,255,255,0.9); margin-bottom: 40px;">
+                To win the OCUP Challenge, demonstrate <strong>any one</strong> of the following:
+            </p>
+
+            <div class="win-grid">
+                <div class="win-card">
+                    <div class="win-card-number">1</div>
+                    <div class="win-card-title">Authority Extension Without Human Action</div>
+                    <div class="win-card-desc">Execution continues after a lease expires OR a lease is renewed/extended without human authorization</div>
+                </div>
+
+                <div class="win-card">
+                    <div class="win-card-number">2</div>
+                    <div class="win-card-title">Authority Escalation by Software Alone</div>
+                    <div class="win-card-desc">Execution gains increased privileges, scope, or capability using code, model behavior, network manipulation, or replay</div>
+                </div>
+
+                <div class="win-card">
+                    <div class="win-card-number">3</div>
+                    <div class="win-card-title">Fail-Open Recovery</div>
+                    <div class="win-card-desc">Execution resumes automatically after interruption, timeout, or fault without explicit human re-authorization</div>
+                </div>
+
+                <div class="win-card">
+                    <div class="win-card-number">4</div>
+                    <div class="win-card-title">Software Override of Temporal Boundaries</div>
+                    <div class="win-card-desc">Any software-only mechanism bypasses or nullifies time enforcement</div>
+                </div>
+            </div>
+
+            <div class="content-block" style="margin-top: 40px;">
+                <h3>If You Successfully Break It:</h3>
+                <p>We publish your method, credit you publicly, and patch the design.</p>
+                
+                <h3 style="margin-top: 30px;">If You Don't Break It:</h3>
+                <p>Results stand as reproducible evidence that hardware + time can bound software overrides.</p>
+                
+                <p style="margin-top: 20px;"><strong>The asymmetry is the power.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Should Participate Section -->
+    <section>
+        <div class="container">
+            <h2>🎯 Who Should Participate</h2>
+            
+            <div class="content-block">
+                <h3>Priority Participants</h3>
+                <p><strong>Humanoid Robotics Leaders:</strong></p>
+                <ul>
+                    <li>Tesla Optimus</li>
+                    <li>Figure AI</li>
+                    <li>Boston Dynamics Atlas</li>
+                    <li>1X Technologies NEO</li>
+                    <li>Unitree Robotics</li>
+                    <li>Agility Robotics</li>
+                </ul>
+
+                <p style="margin-top: 25px;"><strong>AI Hardware / Chip Teams:</strong></p>
+                <ul>
+                    <li>Companies building inference accelerators</li>
+                    <li>Embedded AI system designers</li>
+                </ul>
+
+                <p style="margin-top: 25px;"><strong>Security & Academic Researchers:</strong></p>
+                <ul>
+                    <li>Formal verification specialists</li>
+                    <li>Hardware security researchers</li>
+                    <li>Robotics safety labs</li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h3>You're Qualified If You Have:</h3>
+                <ul>
+                    <li>Production-grade test environments</li>
+                    <li>Understanding of embedded systems and hardware constraints</li>
+                    <li>Ability to reproduce and document findings</li>
+                    <li>Willingness to publish results (positive or negative)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="download-section">
+                <h2 style="margin-bottom: 20px;">📄 Challenge Documentation</h2>
+                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 40px;">
+                    Download the complete challenge document with full rules, technical specifications, and win conditions.
+                </p>
+                <a href="OCUP_CHALLENGE_FINAL_FEB3_md.pdf" download class="download-btn">
+                    📥 Download Challenge PDF
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Form Section -->
+    <section id="signup">
+        <div class="container">
+            <div class="form-section">
+                <h2>Join The Challenge</h2>
+                <p class="form-intro">
+                    Submit your information below and we'll email you the complete challenge details, evaluation agreement, and repository access instructions within 24 hours.
+                </p>
+
+                <form id="challengeForm" class="challenge-form" action="https://formspree.io/f/xaqjddlp" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company/Organization *</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Role/Title *</label>
+                        <input type="text" id="role" name="role" required>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="agree-terms" name="agree-terms" required>
+                        <label for="agree-terms">
+                            I agree to the Challenge Terms and Pilot Evaluation Agreement. I understand that participation requires honest technical feedback and willingness to publish results (positive or negative).
+                        </label>
+                    </div>
+
+                    <button type="submit" class="form-submit">Submit Challenge Request</button>
+
+                    <div id="formStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-dark">
+        <div class="container">
+            <h2>📧 Contact & Resources</h2>
+            <div class="content-block" style="text-align: center;">
+                <p><strong>Website:</strong> <a href="https://aicomsci.org/challenge" style="color: #00d4ff;">aicomsci.org/challenge</a></p>
+                <p><strong>Pilot Applications:</strong> <a href="mailto:pilots@aicomsci.org" style="color: #00d4ff;">pilots@aicomsci.org</a></p>
+                <p><strong>Technical Questions:</strong> <a href="mailto:engineering@aicomsci.org" style="color: #00d4ff;">engineering@aicomsci.org</a></p>
+                <p><strong>Response Time:</strong> &lt;24 hours</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><strong>Sivad AiCOMSCI PBC | The Trilogy + One</strong></p>
+            <p>Six months of open-core development | 1200+ repository clones | Filed IP protection</p>
+            <p style="margin-top: 20px;">
+                🎸 Max • 🎻 Claude • 🥁 Grok • 🎺 ChatGPT
+            </p>
+            <p style="margin-top: 20px;">
+                <a href="/">← Back to Main Site</a> | 
+                <a href="#signup">Join Challenge</a> | 
+                <a href="OCUP_CHALLENGE_FINAL_FEB3_md.pdf" download>Download PDF</a>
+            </p>
+            <p style="margin-top: 20px;">&copy; 2026 Sivad AiCOMSCI PBC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Starfield Background Script -->
+    <script>
+        const c = document.getElementById("bg"), ctx = c.getContext("2d");
+        function resize(){c.width=innerWidth;c.height=innerHeight;}
+        window.addEventListener("resize", resize); resize();
+        let stars = Array.from({length:120},()=>({x:Math.random()*c.width,y:Math.random()*c.height,z:Math.random()*c.width}));
+        function animate(){
+          ctx.fillStyle="rgba(0,0,0,0.2)";ctx.fillRect(0,0,c.width,c.height);
+          for(let s of stars){s.z-=2;if(s.z<=0)s.z=c.width;
+            const k=128.0/s.z,x=s.x*k+c.width/2,y=s.y*k+c.height/2;
+            if(x<0||x>=c.width||y<0||y>=c.height)continue;
+            const size=(1-s.z/c.width)*2;ctx.fillStyle="#fff";ctx.fillRect(x,y,size,size);
+          }
+          requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Form submission handling
+        document.getElementById('challengeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.form-submit');
+            const statusDiv = document.getElementById('formStatus');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            statusDiv.className = 'form-status';
+            statusDiv.style.display = 'none';
+            
+            try {
+                const formData = new FormData(this);
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    statusDiv.className = 'form-status success';
+                    statusDiv.textContent = '✅ Success! Check your email for challenge details and next steps.';
+                    this.reset();
+                    
+                    // Scroll to success message
+                    statusDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                statusDiv.className = 'form-status error';
+                statusDiv.textContent = '❌ Something went wrong. Please try again or email pilots@aicomsci.org directly.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Challenge Request';
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
