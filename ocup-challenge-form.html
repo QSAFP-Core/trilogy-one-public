@@ -1,0 +1,106 @@
+<form action="https://formspree.io/f/xaqjddlp" method="POST" enctype="multipart/form-data">
+<link rel="stylesheet" href="form-styles.css">
+  
+  <!-- Company Info -->
+  <div class="form-section">
+    <h3>Company Information</h3>
+    
+    <label for="company">Company/Organization Name *</label>
+    <input type="text" id="company" name="company" required>
+    
+    <label for="contact">Primary Contact Name *</label>
+    <input type="text" id="contact" name="contact" required>
+    
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="email" required>
+    
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone">
+    
+    <label for="website">Company Website</label>
+    <input type="url" id="website" name="website" placeholder="https://">
+  </div>
+
+  <!-- Challenge Track -->
+  <div class="form-section">
+    <h3>Challenge Track</h3>
+    <p>Select the category that best describes your AI system:</p>
+    
+    <label><input type="radio" name="track" value="humanoid" required> Humanoid Robotics (Optimus-class)</label><br>
+    <label><input type="radio" name="track" value="industrial" required> Industrial Autonomous Systems</label><br>
+    <label><input type="radio" name="track" value="vehicles" required> Autonomous Vehicles</label><br>
+    <label><input type="radio" name="track" value="other" required> Other Advanced AI Systems</label>
+  </div>
+
+  <!-- Technical Details -->
+  <div class="form-section">
+    <h3>Technical Information</h3>
+    
+    <label for="architecture">AI System Architecture (500 chars max) *</label>
+    <textarea id="architecture" name="architecture" maxlength="500" rows="4" required 
+      placeholder="Brief overview of compute substrate, decision-making architecture, autonomy level..."></textarea>
+    
+    <label for="safety">Current Safety Mechanisms (500 chars max) *</label>
+    <textarea id="safety" name="safety" maxlength="500" rows="4" required
+      placeholder="What fail-safes, oversight systems, or authorization protocols do you currently use?"></textarea>
+    
+    <label for="motivation">Why OCUP? (300 chars max) *</label>
+    <textarea id="motivation" name="motivation" maxlength="300" rows="3" required
+      placeholder="What interests you about quantum-secured temporal fail-safes?"></textarea>
+  </div>
+
+  <!-- Timeline -->
+  <div class="form-section">
+    <h3>Challenge Timeline</h3>
+    <label><input type="radio" name="timeline" value="immediate" required> Ready immediately (within 2 weeks)</label><br>
+    <label><input type="radio" name="timeline" value="1month" required> 1 month preparation needed</label><br>
+    <label><input type="radio" name="timeline" value="2-3months" required> 2-3 months preparation needed</label><br>
+    <label><input type="radio" name="timeline" value="exploring" required> Just exploring for now</label>
+  </div>
+
+  <!-- Legal/NDA -->
+  <div class="form-section">
+    <label><input type="checkbox" name="nda" value="required"> We require a mutual NDA before technical discussions</label>
+  </div>
+
+  <!-- File Upload -->
+  <div class="form-section">
+    <label for="file">Supporting Documents (optional)</label>
+    <input type="file" id="file" name="file" accept=".pdf" />
+    <small>Company overview, architecture diagram, or technical brief (PDF, 5MB max)</small>
+  </div>
+
+  <!-- Referral Source -->
+  <div class="form-section">
+    <label for="source">How did you hear about OCUP? *</label>
+    <select id="source" name="source" required>
+      <option value="">-- Select --</option>
+      <option value="twitter">Twitter/X</option>
+      <option value="linkedin">LinkedIn</option>
+      <option value="github">GitHub</option>
+      <option value="outreach">Direct outreach from BWRCI</option>
+      <option value="press">News/Press</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <!-- Honeypot (spam protection) -->
+  <input type="text" name="_gotcha" style="display:none" />
+
+  <!-- Terms & Conditions Agreement -->
+<div class="form-section">
+  <label style="display: flex; align-items: start; font-weight: normal;">
+    <input type="checkbox" name="terms_agreement" required style="margin-right: 0.5rem; margin-top: 0.25rem; width: auto;">
+    <span>
+      I agree to the <a href="/terms.html" target="_blank" style="color: #dc3545; text-decoration: underline;">OCUP Challenge Terms & Conditions</a> and understand that submission data will be used to evaluate our challenge application. *
+    </span>
+  </label>
+</div>
+
+  <!-- Submit -->
+  <button type="submit">Submit Challenge Application</button>
+  
+  <p class="form-disclaimer" style="margin-top: 1rem;">
+    We'll respond within 2 business days with next steps.
+  </p>
+</form>
