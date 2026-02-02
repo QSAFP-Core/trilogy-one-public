@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Received - OCUP Challenge</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 600px;
+      width: 100%;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    
+    .header {
+      background: #dc3545;
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    .crest {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.5rem;
+      background: white;
+      border-radius: 50%;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .crest img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    .checkmark {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: scaleIn 0.5s ease-out;
+    }
+    
+    @keyframes scaleIn {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+    
+    .content {
+      padding: 2.5rem;
+    }
+    
+    .message {
+      font-size: 1.125rem;
+      color: #495057;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .info-box {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      border-radius: 4px;
+      margin: 2rem 0;
+      overflow: hidden;
+    }
+    
+    .info-box-header {
+      padding: 1.5rem;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .info-box-header:hover {
+      background: #ffecb3;
+    }
+    
+    .info-box-header h3 {
+      color: #856404;
+      font-size: 1.125rem;
+      margin: 0;
+    }
+    
+    .info-box-toggle {
+      color: #856404;
+      font-size: 1.5rem;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+    
+    .info-box-toggle.open {
+      transform: rotate(180deg);
+    }
+    
+    .info-box-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .info-box-content.open {
+      max-height: 500px;
+    }
+    
+    .info-box-content ol {
+      color: #856404;
+      padding: 0 1.5rem 1.5rem 3rem;
+      line-height: 1.8;
+    }
+    
+    .info-box-content li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .contact-box {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    
+    .contact-box strong {
+      display: block;
+      color: #212529;
+      margin-bottom: 0.5rem;
+      font-size: 1.125rem;
+    }
+    
+    .contact-box a {
+      color: #dc3545;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+    
+    .contact-box a:hover {
+      text-decoration: underline;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: #dc3545;
+      color: white;
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1.125rem;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    .btn:hover {
+      background: #c82333;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #f8f9fa;
+      color: #6c757d;
+      font-size: 0.875rem;
+      border-top: 1px solid #dee2e6;
+    }
+    
+    .footer a {
+      color: #dc3545;
+      text-decoration: none;
+    }
+    
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 640px) {
+      body {
+        padding: 1rem;
+      }
+      
+      .header {
+        padding: 2rem 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .content {
+        padding: 1.5rem;
+      }
+      
+      .crest {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="crest">
+        <img src="CREST-2.png" alt="OCUP Challenge Crest">
+      </div>
+      <div class="checkmark">✅</div>
+      <h1>Application Received!</h1>
+      <p class="subtitle">Your OCUP Challenge submission is under review</p>
+    </div>
+    
+    <div class="content">
+      <p class="message">
+        Thank you for taking on the <strong>OCUP Autonomous Challenge</strong>. 
+        We've received your application and our team is reviewing it now.
+      </p>
+      
+      <div class="info-box">
+        <div class="info-box-header" onclick="toggleInfo()">
+          <h3>📋 What Happens Next</h3>
+          <span class="info-box-toggle" id="toggle">▼</span>
+        </div>
+        <div class="info-box-content" id="info-content">
+          <ol>
+            <li><strong>Application Review</strong> – We'll evaluate your AI system architecture and safety mechanisms (1-2 business days)</li>
+            <li><strong>Email Response</strong> – You'll receive our decision at the email address you provided</li>
+            <li><strong>Technical Deep-Dive</strong> – If selected, we’ll schedule a brief technical discussion to align on testing scope and integration approach</li>
+            <li><strong>Challenge Begins</strong> – Upon acceptance, you'll receive full challenge rules, timeline and a lightweight Challenge Participation Agreement (CPA)</li>
+          </ol>
+        </div>
+      </div>
+      
+      <div class="contact-box">
+        <strong>Watch your inbox for:</strong>
+        <a href="mailto:challenge@bwrci.org">challenge@bwrci.org</a>
+      </div>
+      
+      <div style="text-align: center;">
+        <a href="/" class="btn">Return to Homepage</a>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>
+        <strong>Questions?</strong> Contact us at 
+        <a href="mailto:challenge@bwrci.org">challenge@bwrci.org</a>
+      </p>
+      <p style="margin-top: 0.5rem;">
+        DigiPie International PBC | 
+        <a href="https://aicomsci.org" target="_blank">aicomsci.org</a>
+      </p>
+      <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.7;">
+        We ride at dawn. 🦾⚡
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function toggleInfo() {
+      const content = document.getElementById('info-content');
+      const toggle = document.getElementById('toggle');
+      content.classList.toggle('open');
+      toggle.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
